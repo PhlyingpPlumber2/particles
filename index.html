@@ -139,7 +139,8 @@
 				for (int i = 0; i < velocitySteps; i++) {
 				  for (Particle particle : particles) {
 					//Should this be divided by velocitySteps?
-					PVector force = getElectricField(particle.x, particle.y).mult(particle.charge);
+					PVector force = getElectricField(particle.x, particle.y);
+					force.mult(particle.charge);
 					particle.vx += force.x * animationMultiplier;
 					particle.vy += force.y * animationMultiplier;
 
@@ -205,7 +206,8 @@
 				strokeWeight(3);
 
 				for (Particle particle : particles) {
-				  PVector force = getElectricField(particle.x, particle.y).mult(particle.charge);
+				  PVector force = getElectricField(particle.x, particle.y);
+				  force.mult(particle.charge);
 				  line(particle.x, particle.y, particle.x + force.x * forceScale, particle.y + force.y * forceScale);
 				}
 
